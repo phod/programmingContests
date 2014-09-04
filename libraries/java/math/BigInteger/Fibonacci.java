@@ -16,16 +16,23 @@
 */
 
 import java.math.BigInteger;
+import java.util.Scanner;
 
 public class Fibonacci {
 
     private static BigInteger memo[];
     
     public static void main(String [] args) {
-        int input = Integer.parseInt(args[0]) + 1;
-        memo = new BigInteger[input];
-        calculateFib(input);
-        printFib(input);
+        Scanner scan = new Scanner(System.in);
+        if (scan.hasNextInt()) {
+            int input = scan.nextInt() + 1;
+            memo = new BigInteger[input];
+            calculateFib(input);
+            printFib(input);
+        } else {
+            System.out.println("This program requires a single integer" +
+                               " as input via stdin");
+        }
     }
 
     public static void calculateFib(int fibNum) {
