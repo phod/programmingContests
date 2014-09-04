@@ -24,11 +24,19 @@ public class Fibonacci {
     
     public static void main(String [] args) {
         Scanner scan = new Scanner(System.in);
+        boolean calculateSingle = false;
         if (scan.hasNextInt()) {
+            if (args.length > 0 && args[0] == "-s") { //currently not working
+                calculateSingle = true;
+            }
             int input = scan.nextInt() + 1;
             memo = new BigInteger[input];
-            calculateFib(input);
-            printFib(input);
+            if (calculateSingle) {
+                findFib(input);
+            } else {
+                calculateFib(input);
+                printFib(input);
+            }
         } else {
             System.out.println("This program requires a single integer" +
                                " as input via stdin");
@@ -41,6 +49,10 @@ public class Fibonacci {
         for (int i = 2; i < fibNum; i++) {
             memo[i] = memo[i-1].add(memo[i-2]);
         }
+    }
+
+    public static BigInteger findFib(int fibNum) {
+        return findFib(fibNum).add(findFib(fibNum));
     }
 
     public static void printFib(int fibNum) {
