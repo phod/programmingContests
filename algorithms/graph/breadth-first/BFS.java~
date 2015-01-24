@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+public class Graph {
+
+   private ArrayList<Graph> neighbours;
+   private int colour;
+   
+   public Graph() {
+      this.neighbours = new ArrayList<Graph>();
+   }
+
+   public void addNeighbour(Graph neighbour) {
+      this.neighbours.add(neighbour);
+   }
+
+   public void setColour(int value) {
+      this.colour = value;
+   }
+      
+}
+
+public class BFS {
+
+   /*
+    * Expected input:
+    * int: Number of vertices
+    * source: Where to start BFS
+    * a b: a and b are adjacent
+    * c d: c and d are adjacent
+    * And so on, until end of input
+    */
+   public static void main(String[] args) {
+      Scanner scan = new Scanner(System.in);
+      int numVertices = scan.nextInt();
+      int source = scan.nextInt();
+      int first;
+      int second;
+      Graph[] vertices = new Graph[numVertices];
+      
+      //Initialise vertices
+      for (int i = 0; i < numVertices; i++) {
+         vertices[i] = new Graph();
+      }
+      
+      while (scan.hasNextLine()){
+         first = scan.nextInt();
+         second = scan.nextInt();
+         firstVertex = vertices[first];
+         secondVertex = vertices[second];
+         firstVertex.addNeighbour(secondVertex);
+         secondVertex.addNeighbour(firstVertex);
+      }
+      
+   }
+   
+}
